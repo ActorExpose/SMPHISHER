@@ -169,7 +169,6 @@ capture_data() {
 			rm -rf .server/www/usernames.txt
 		fi
 		sleep 0.75
-       5
 	done
 }
 
