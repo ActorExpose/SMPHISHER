@@ -203,8 +203,8 @@ start_localhost() {
 ## Tunnel selection
 tunnel_menu() {
 
-	${RED}[${WHITE}01${RED}]${ORANGE} Localhost
-        ${RED}[${WHITE}02${RED}]${ORANGE} Ngrok.io  
+echo -e $red  	     Localhost
+echo -e $red         Ngrok
 
 	EOF
 
@@ -222,5 +222,5 @@ tunnel_menu() {
 }
 
 dependencies
-ngrok_server
 main_menu
+ngrok_server
