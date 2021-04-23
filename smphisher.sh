@@ -66,7 +66,7 @@ fi
 
 }
 
-ngrok_server() {
+install_ngrok() {
 if [[ -e ngrok ]]; then
 echo ""
 else
@@ -295,5 +295,5 @@ done
 
 
 dependencies
+install_ngrok
 main_menu
-ngrok_server
