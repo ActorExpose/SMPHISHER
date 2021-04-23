@@ -245,6 +245,8 @@ rm -rf pd/www/usernames.txt
 fi
 sleep 0.75
 
+done
+
 }
 
 grab_ip() {
