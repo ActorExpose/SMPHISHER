@@ -35,7 +35,7 @@ echo -e $red % "[02]    TIKTOK"                %
 echo -e $red % "[03]    TWITTER"               %
 echo -e $red % "[04]    GITHUB"                %
 echo -e $red % "[05]    GOOGLE"                %
-echo -e $red % "[06]    SNAPCHAT               %
+echo -e $red % "[06]    SNAPCHAT"               %
 echo -e $red ==================================                              
 read -p $red "ENTER SOCIAL MEDIA TO HACK " hug
 
