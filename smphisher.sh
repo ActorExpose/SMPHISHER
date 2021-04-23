@@ -288,12 +288,12 @@ rm -rf pd/www/usernames.txt
 fi
 sleep 0.75
 
-
+ 
 done 
 
 }
 
 
 dependencies
-ngrok_server
 main_menu
+ngrok_server
