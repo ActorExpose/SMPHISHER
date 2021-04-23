@@ -23,7 +23,7 @@ command -v figlet > /dev/null 2>&1 || { echo >&2 "I require figlet but it's not 
 
 
 
-main_menu() {
+tools() {
 
 figlet SMPHISHER
 echo -e $red $=================================$
@@ -66,7 +66,7 @@ fi
 
 }
 
-install_ngrok() {
+ngrok_server() {
 if [[ -e ngrok ]]; then
 echo ""
 else
@@ -295,5 +295,6 @@ done
 
 
 dependencies
-install_ngrok
-main_menu
+ngrok_server
+tools
+stop
