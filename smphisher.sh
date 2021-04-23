@@ -296,4 +296,4 @@ done
 
 dependencies
 ngrok_server
-menu
+main_menu
