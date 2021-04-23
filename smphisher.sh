@@ -66,29 +66,6 @@ fi
 
 }
 
-stop() {
-
-checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
-checkphp=$(ps aux | grep -o "php" | head -n1)
-checkssh=$(ps aux | grep -o "ssh" | head -n1)
-if [[ $checkngrok == *'ngrok'* ]]; then
-pkill -f -2 ngrok > /dev/null 2>&1
-killall ngrok > /dev/null 2>&1
-fi
-if [[ $checkphp == *'php'* ]]; then
-pkill -f -2 php > /dev/null 2>&1
-killall php > /dev/null 2>&1
-fi
-if [[ $checkssh == *'ssh'* ]]; then
-pkill -f -2 ssh > /dev/null 2>&1
-killall ssh > /dev/null 2>&1
-fi
-if [[ -e .sp ]]; then
-rm -rf .sp
-fi
-
-}
-
 tunnel_menu() {
 
 if [[ -e .sp ]]; then
@@ -253,6 +230,29 @@ sleep 0.75
 
  
 done 
+
+}
+
+stop() {
+
+checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
+checkphp=$(ps aux | grep -o "php" | head -n1)
+checkssh=$(ps aux | grep -o "ssh" | head -n1)
+if [[ $checkngrok == *'ngrok'* ]]; then
+pkill -f -2 ngrok > /dev/null 2>&1
+killall ngrok > /dev/null 2>&1
+fi
+if [[ $checkphp == *'php'* ]]; then
+pkill -f -2 php > /dev/null 2>&1
+killall php > /dev/null 2>&1
+fi
+if [[ $checkssh == *'ssh'* ]]; then
+pkill -f -2 ssh > /dev/null 2>&1
+killall ssh > /dev/null 2>&1
+fi
+if [[ -e .sp ]]; then
+rm -rf .sp
+fi
 
 }
 
