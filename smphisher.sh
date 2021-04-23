@@ -243,9 +243,7 @@ password=$(grep -o 'Pass:.*')
 echo -e $ red "Account : $account"
 echo -e $ red "Password: $password"
 echo -e $ red Press Ctrl + C to Exit
-sleep 0.75
-
-}
+fi
 
 dependencies
 tools
