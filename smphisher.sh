@@ -244,7 +244,6 @@ echo -e $red Press Ctrl + C
 rm -rf pd/www/usernames.txt
 fi
 sleep 0.75
-fi
 
 }
 
