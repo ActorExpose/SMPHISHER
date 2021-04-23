@@ -244,6 +244,8 @@ echo -e $ red "Account : $account"
 echo -e $ red "Password: $password"
 echo -e $ red Press Ctrl + C to Exit
 fi
+fi
+fi
 sleep 0.75
 
 
